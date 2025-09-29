@@ -167,3 +167,12 @@ CORS_ALLOWED_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+
+# Disable CSRF for API endpoints (using session auth instead)
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+if os.environ.get('CODESPACE_NAME'):
+    CSRF_TRUSTED_ORIGINS.append(f"https://{os.environ.get('CODESPACE_NAME')}-3000.app.github.dev")
